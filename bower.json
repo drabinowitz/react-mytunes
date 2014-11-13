@@ -1,0 +1,23 @@
+{
+  "name": "react-mytunes",
+  "version": "0.0.0",
+  "homepage": "https://github.com/drabinowitz/react-mytunes",
+  "authors": [
+    "drabinowitz <dmitrirabinowitz+development@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "~0.12.0",
+    "mocha": "~2.0.1",
+    "chai": "~1.10.0",
+    "showdown": "~0.3.1",
+    "jquery": "~2.1.1"
+  }
+}
