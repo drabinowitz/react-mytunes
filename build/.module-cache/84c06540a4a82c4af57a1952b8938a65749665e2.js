@@ -1,8 +1,11 @@
-var CommentBox = React.createClass({displayName: 'CommentBox',
+var App = React.createClass({displayName: 'App',
   getInitialState: function() {
-    return {data: []};
+    return {queue: []};
   },
-  loadCommentsFromServer: function() {
+  enqueue: function(song) {
+    this.setState({queue: this.state.queue.concat(song)});
+  },
+/*  loadCommentsFromServer: function() {
     $.ajax({
       url: this.props.url,
       dataType: 'json',
@@ -29,23 +32,21 @@ var CommentBox = React.createClass({displayName: 'CommentBox',
         console.error(this.props.url,status,err.toString());
       }.bind(this)
     })
-  },
+  },*/
   componentDidMount: function() {
-    this.loadCommentsFromServer();
-    setInterval(this.loadCommentsFromServer, this.props.pollInterval);
   },
   render: function() {
     return (
       React.createElement("div", {className: "commentBox"}, 
-        React.createElement("h1", null, "Comments"), 
-        React.createElement(CommentList, {data: this.state.data}), 
-        React.createElement(CommentForm, {onCommentSubmit: this.handleCommentSubmit})
+        React.createElement("h1", null, "My Tunes"), 
+        React.createElement(Library, {songs: this.props.library, onSongClick: this.enqueue}), 
+        React.createElement(SongQueue, {songs: this.state.queue})
       )
     );
   }
 });
 
 React.render(
-  React.createElement(CommentBox, {url: "build/comments.json", pollInterval: 2000}),
+  React.createElement(App, {library: songData}),
   document.getElementById('content')
 );
