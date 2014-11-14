@@ -5,7 +5,7 @@ var Library = React.createClass({
   render:function(){
     var songs = this.props.library.map(function (song){
       return (
-        <Song song={song} onSongClick={this.handleSongClick}></Song>
+        <Song song={song} onSongClick={this.handleSongClick}/>
       );
     }.bind(this));
     return (

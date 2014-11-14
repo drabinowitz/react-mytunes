@@ -5,7 +5,7 @@ var SongQueue = React.createClass({
   render: function(){
     var songs = this.props.queue.map(function(song){
       return (
-        <Song song={song} onSongClick={this.handleSongClick}></Song>
+        <Song song={song} onSongClick={this.handleSongClick}/>
       );
     }.bind(this));
     return (

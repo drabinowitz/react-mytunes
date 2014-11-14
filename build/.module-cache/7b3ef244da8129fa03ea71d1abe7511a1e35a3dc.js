@@ -1,4 +1,4 @@
-var App = React.createClass({
+var App = React.createClass({displayName: 'App',
   getInitialState: function() {
     return {queue: []};
   },
@@ -17,17 +17,16 @@ var App = React.createClass({
   },
   render: function() {
     return (
-      <div className="commentBox">
-        <h1>My Tunes</h1>
-        <Library library={this.props.library} onSongClick={this.enqueue}/>
-        <SongQueue queue={this.state.queue} onSongClick={this.dequeue}/>
-        <Player/>
-      </div>
+      React.createElement("div", {className: "commentBox"}, 
+        React.createElement("h1", null, "My Tunes"), 
+        React.createElement(Library, {library: this.props.library, onSongClick: this.enqueue}), 
+        React.createElement(SongQueue, {queue: this.state.queue, onSongClick: this.dequeue})
+      )
     );
   }
 });
 
 React.render(
-  <App library={songData} />,
+  React.createElement(App, {library: songData}),
   document.getElementById('content')
 );

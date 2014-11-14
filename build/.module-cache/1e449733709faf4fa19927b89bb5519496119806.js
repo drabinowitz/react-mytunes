@@ -3,9 +3,7 @@ var App = React.createClass({displayName: 'App',
     return {queue: []};
   },
   enqueue: function(song) {
-    if (!_(this.state.queue).contains(song)){
-      this.setState({queue: this.state.queue.concat(song)});
-    }
+    this.setState({queue: this.state.queue.concat(song)});
   },
   dequeue: function(song) {
     var newState = this.state.queue.filter(function(queuedSong){
@@ -20,8 +18,7 @@ var App = React.createClass({displayName: 'App',
       React.createElement("div", {className: "commentBox"}, 
         React.createElement("h1", null, "My Tunes"), 
         React.createElement(Library, {library: this.props.library, onSongClick: this.enqueue}), 
-        React.createElement(SongQueue, {queue: this.state.queue, onSongClick: this.dequeue}), 
-        React.createElement(Player, null)
+        React.createElement(SongQueue, {queue: this.state.queue, onSongClick: this.dequeue})
       )
     );
   }
